@@ -3,7 +3,7 @@
 variable "instance_count" {
   description = "Private IP address to associate with the instance in a VPC"
   type        = number
-  default     = 1
+  default     = "<%= customOptions.instance_count%>"
 }
 
 variable "iam_instance_profile" {
@@ -38,22 +38,22 @@ variable "host_id" {
 variable "ebs_block_device_name" {
   description = "Additional EBS block devices to attach to the instance"
   type        = list(string)
-  default     = []
+  default     = ["xvdf","xvdg"]
 }
 variable "ebs_block_volume_size" {
   description = "Additional EBS block devices to attach to the instance"
   type        = list(string)
-  default     = []
+  default     = ["10","20"]
 }
 variable "ebs_block_volume_type" {
   description = "Additional EBS block devices to attach to the instance"
   type        = list(string)
-  default     = []
+  default     = ["gp3","gp3"]
 }
 variable "ebs_block_volume_iops" {
   description = "Additional EBS block devices to attach to the instance"
   type        = list(string)
-  default     = []
+  default     = ["1000","1000"]
 }
 
 

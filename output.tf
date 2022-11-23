@@ -1,3 +1,4 @@
+/*
 output "machine_id" {
   description = "The ID of the instance"
   value       = try(aws_instance.ec2_test[*].id, "")
@@ -66,17 +67,40 @@ output "root_block_device_encrytion" {
   description = "The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`"
   value       = aws_instance.ec2_test[*].root_block_device[0].encrypted
 }
-/*
+
 output "ebs_block_device" {
   description = "The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`"
     value       = aws_instance.ec2_test.ebs_block_device
     
-}*/
+}
 output "ebs_block_device" {
   description = "The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`"
   value       = aws_instance.ec2_test[*].ebs_block_device[*].device_name
 
+}*/
+output "machine_values" {
+  description = "Alternatively way  of resource values."
+  value = { for k, v in aws_instance.ec2_test : k => {
+    name = v.private_ip
+    coun = "${k}"
+    machine_id   = v.id
+    machine_state = v.instance_state
+    resource_name = v.tags.Name
+    machine_type = v.instance_type
+    iam_role = v.iam_instance_profile
+    image_id = v.ami
+    vpc_id = v.vpc_security_group_ids
+    subnet_id = v.subnet_id
+    network_interface_id = v.primary_network_interface_id
+    root_block_device_volume_id = v.root_block_device[*]
+    ebs_block_device_volume_id = v.ebs_block_device[*]
+    ec2_test_tags_all = v.tags
+    }
+    }
 }
+
+
+
 
 
 

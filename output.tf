@@ -29,7 +29,7 @@ output "private_ip" {
 }
 output "vpc_id" {
   description = "The public IP address assigned to the instance, if applicable. NOTE: If you are using an aws_eip with your instance, you should refer to the EIP's address directly and not use `public_ip` as this field will change after the EIP is attached"
-  value       = try(aws_instance.ec2_test[*].vpc_id, "")
+  value       = try(aws_instance.ec2_test[*].vpc_security_group_ids, "")
 }
 
 output "subnet_id" {
@@ -70,21 +70,21 @@ output "root_block_device_encrytion" {
 
 output "ebs_block_device_type" {
   description = "The ebs volune device type"
-    value       = aws_instance.ec2_test[*].ebs_block_device[*].volume_type
+    value       = try(aws_instance.ec2_test[*].ebs_block_device[*].volume_type,"")
     
 }
 output "ebs_block_device_name" {
   description = "The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`"
-  value       = aws_instance.ec2_test[*].ebs_block_device[*].device_name
+  value       = try(aws_instance.ec2_test[*].ebs_block_device[*].device_name,"")
 
 }
 output "ebs_block_device_volume_id" {
   description = "The volume Id of ebs block device"
-  value       = aws_instance.ec2_test[*].ebs_block_device[*].volume_id
+  value       = try(aws_instance.ec2_test[*].ebs_block_device[*].volume_id,"")
 }
 output "ebs_block_device_volume_size" {
   description = "The volume size of ebs block device"
-  value       = aws_instance.ec2_test[*].ebs_block_device[*].volume_size
+  value       = try(aws_instance.ec2_test[*].ebs_block_device[*].volume_size,"")
 }
 output "dedicated_tenency" {
   description = "The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`"

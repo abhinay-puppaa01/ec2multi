@@ -3,6 +3,10 @@ output "machine_id" {
   description = "The ID of the instance"
   value       = try(aws_instance.ec2_test[*].id, "")
 }
+output "Instance count" {
+  description = "The ID of the instance"
+  value       = try(var.instance_count, "")
+}
 output "machine_state" {
   description = "The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`"
   value       = aws_instance.ec2_test[*].instance_state

@@ -3,7 +3,7 @@ output "machine_id" {
   description = "The ID of the instance"
   value       = try(aws_instance.ec2_test[*].id, "")
 }
-output "Instance count" {
+output "Instance_count" {
   description = "The ID of the instance"
   value       = try(var.instance_count, "")
 }

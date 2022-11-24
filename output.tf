@@ -48,29 +48,29 @@ output "network_interface_id" {
 
 output "root_block_device_volume_id" {
   description = "The volume Id of root block device"
-  value       = aws_instance.ec2_test[*].root_block_device[0].volume_id
+  value       = aws_instance.ec2_test[*].root_block_device[*].volume_id
 }
 
 output "root_block_device_volume_size" {
   description = "The volume size of root block device"
-  value       = aws_instance.ec2_test[*].root_block_device[0].volume_size
+  value       = aws_instance.ec2_test[*].root_block_device[*].volume_size
 }
 output "root_block_device_volume_type" {
   description = "The volume type of root block device"
-  value       = aws_instance.ec2_test[*].root_block_device[0].volume_type
+  value       = aws_instance.ec2_test[*].root_block_device[*].volume_type
 }
 output "root_block_device" {
   description = "The name of root block device"
-  value       = aws_instance.ec2_test[*].root_block_device[0].device_name
+  value       = aws_instance.ec2_test[*].root_block_device[*].device_name
 }
 output "root_block_device_encrytion" {
   description = "The root block device encrytion"
-  value       = aws_instance.ec2_test[*].root_block_device[0].encrypted
+  value       = aws_instance.ec2_test[*].root_block_device[*].encrypted
 }
 
 output "ebs_block_device_type" {
   description = "The ebs volune device type"
-    value       = aws_instance.ec2_test.ebs_block_device[*].volume_type
+    value       = aws_instance.ec2_test[*].ebs_block_device[*].volume_type
     
 }
 output "ebs_block_device_name" {
@@ -84,7 +84,7 @@ output "ebs_block_device_volume_id" {
 }
 output "ebs_block_device_volume_size" {
   description = "The volume size of ebs block device"
-  value       = aws_instance.ec2_test[*].ebs_block_device[0].volume_size
+  value       = aws_instance.ec2_test[*].ebs_block_device[*].volume_size
 }
 output "dedicated_tenency" {
   description = "The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`"

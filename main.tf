@@ -22,7 +22,7 @@ resource "aws_instance" "ec2_test" {
   private_ip             = var.private_ip
   tenancy                = var.tenancy
   host_id                = var.host_id
-  tags                   = merge({ "Name" = "${var.instance_name}-${count.index}" "RequestedBy"="${var.RequestedBy}"}, var.tags)
+  tags                   = merge({ "Name" = "${var.instance_name}-${count.index}" ,"RequestedBy"="${var.RequestedBy}"}, var.tags)
 
   root_block_device {
     volume_size           = var.root_block_device_volume_size

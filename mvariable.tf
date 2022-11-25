@@ -60,7 +60,7 @@ variable "ebs_block_volume_iops" {
 variable "root_block_device_volume_type" {
   description = "root_block_device_volume_type"
   type        = string
-  default     = "gp2"
+  default     = "gp3"
 }
 variable "root_block_device_volume_size" {
   description = "root_block_device_volume_size"

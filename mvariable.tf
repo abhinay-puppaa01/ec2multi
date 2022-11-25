@@ -130,16 +130,17 @@ variable "RequestedBy" {
   description = "Email id of the user"
   type        =  string
 default = "<%=instance.createdByEmail%>"
-  
+}
 variable "primary_contact" {
   description = "Primary owner of the machine"
   type        =  string
-default = "<%= customOptions.primary_contact%>""
-  
+default = "<%= customOptions.primary_contact%>"
+  }
  variable "secondary_contact" {
-  description = "Primary owner of the machine"
+  description = "Secondary owner of machine"
   type        =  string
-default = "<%= customOptions.secondary_contact%>"
+  default = "<%= customOptions.secondary_contact%>"
+  }
   
 variable "tags" {
   description = "tags"

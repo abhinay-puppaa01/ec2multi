@@ -126,13 +126,26 @@ variable "vpc_security_group_ids" {
   type        =  list(string)
 default = ["<%= customOptions.vpc_security_group_ids.encodeAsJson().toString()%>"]
 }
+variable "RequestedBy" {
+  description = "Email id of the user"
+  type        =  string
+default = <%=instance.createdByEmail%>
+  
+variable "primary_contact" {
+  description = "Primary owner of the machine"
+  type        =  string
+default = "<%= customOptions.primary_contact%>""
+  
+ variable "secondary_contact" {
+  description = "Primary owner of the machine"
+  type        =  string
+default = "<%= customOptions.secondary_contact%>"
+  
 variable "tags" {
   description = "tags"
   type        = map(string)
 default = {
     "CostCenterID" : "2322748"
-    "RequestedBy"   : "IOD"
-    "VCAC Owner" : "VCAC Owner"
     "Centrify" : "Centrify"
     "Description" : "Description"
     "ProjectCode" : "A123456"

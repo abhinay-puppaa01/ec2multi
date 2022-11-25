@@ -29,7 +29,7 @@ resource "aws_instance" "ec2_test" {
     volume_type           = var.root_block_device_volume_type
     encrypted             = var.ebs_optimized
     delete_on_termination = true
-    tags                  = merge({ "Name" = "${var.instance_name}-${count.index}" }, var.tags)
+    tags                  = merge({ "Name" = "root-${var.instance_name}-${count.index}" }, var.tags)
   }
 
   dynamic "ebs_block_device" {
@@ -40,6 +40,7 @@ resource "aws_instance" "ec2_test" {
       tags        = merge({ "Name" = var.instance_name }, var.tags)
       iops        = lookup(ebs_block_device.value, "iops", null)
       device_name = lookup(ebs_block_device.value, "device_name", null)
+      tags                  = merge({ "Name" = "${var.instance_name}-${timestamp()}" }, var.tags)
     }
   }
 

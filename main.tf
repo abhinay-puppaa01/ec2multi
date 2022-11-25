@@ -37,11 +37,10 @@ resource "aws_instance" "ec2_test" {
     content {
       volume_type = lookup(ebs_block_device.value, "volume_type", null)
       volume_size = lookup(ebs_block_device.value, "volume_size", null)
-      tags        = merge({ "Name" = var.instance_name }, var.tags)
+      tags        = merge({ "Name" = "${var.instance_name}-${timestamp()}" }, var.tags)
       iops        = lookup(ebs_block_device.value, "iops", null)
       device_name = lookup(ebs_block_device.value, "device_name", null)
-      tags                  = merge({ "Name" = "${var.instance_name}-${timestamp()}" }, var.tags)
-    }
+     }
   }
 
 

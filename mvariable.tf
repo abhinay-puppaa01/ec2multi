@@ -129,7 +129,7 @@ default = ["<%= customOptions.vpc_security_group_ids.encodeAsJson().toString()%>
 variable "RequestedBy" {
   description = "Email id of the user"
   type        =  string
-default = <%=instance.createdByEmail%>
+default = "<%=instance.createdByEmail%>"
   
 variable "primary_contact" {
   description = "Primary owner of the machine"

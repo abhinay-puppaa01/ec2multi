@@ -93,7 +93,7 @@ variable "region" {
 variable "ami" { 
   description = "Ami"
   type        = string
-  default ="ami-064d05b4fe8515623"
+  default ="ami-01b77f95a97a7ed58"
 #default = "<%= customOptions.operating_system%>"
 }
 
@@ -154,6 +154,9 @@ default = {
     "ApplicationDeploymentCIID" : "SC2818380"
     "Deploymenttype" : "newprovision"
     "ProvisionType" : "IOD"
+    "PrimaryOwner" : "PrimaryOwner@email.com"
+    "SecondaryOwner" : "SecondaryOwner@email.com"
+  
   }
 
 }
